@@ -29,7 +29,7 @@ $(document).ready(function() {
     // when animal button is clicked
     $(".animal-btn").on("click", function() {
 
-    	// clear gif results panel
+        // clear gif results panel
         $("#animal-img").empty();
 
         // select attribute value of clicked button ...
@@ -49,13 +49,13 @@ $(document).ready(function() {
         // after getting search query results (response), pass through function
         .done(function(response) {
 
-        	// access data of response
+            // access data of response
             var results = response.data;
 
             // for each result (limit: 3)...
             for (var i = 0; i < results.length; i++) {
 
-            	// ... create div tag
+                // ... create div tag
                 var animalDiv = $("<div>");
 
                 // ... create img tag
