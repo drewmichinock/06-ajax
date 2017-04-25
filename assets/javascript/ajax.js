@@ -6,17 +6,22 @@ $(document).ready(function() {
         "pygmy goat", "chicken", "capybara", "teacup pig", "serval", "salamander", "frog"
     ];
 
-    // create default animals buttons
+    // for each item in animals array
     for (var i = 0; i < animals.length; i++) {
 
+    	// create button
         var animalBtn = $("<button>");
 
+        // add class "animal-btn"
         animalBtn.addClass("animal-btn");
 
+        // add attribute "data-animal" with animal name
         animalBtn.attr("data-animal", animals[i]);
 
+        // user animal name for button label
         animalBtn.text(animals[i]);
 
+        // add to panel with "animal-buttons" id
         $("#animal-buttons").append(animalBtn);
 
     }
