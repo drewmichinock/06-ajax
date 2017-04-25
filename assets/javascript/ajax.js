@@ -1,39 +1,44 @@
 $(document).ready(function() {
 
-    // default animals
+    // default animal button labels
     var animals = ["dog", "cat", "rabbit", "hamster", "skunk", "goldfish", "bird",
         "ferret", "turtle", "sugar glider", "chinchilla", "hedgehog", "hermit crab", "gerbil",
-        "pygmy goat", "chicken", "capybara", "teacup pig", "serval", "salamander", "frog"
+        "pygmy goat", "chicken", "capybara", "teacup pig", "guinea pig", "lizard", "frog"
     ];
 
-    // creating buttons for each item in animals array
+    // creating buttons from default animal button labels array
     for (var i = 0; i < animals.length; i++) {
 
         // create button
         var animalBtn = $("<button>");
 
-        // add class .animal-btn
+        // add animal-btn class
         animalBtn.addClass("animal-btn");
 
-        // add attribute "data-animal" with animal name
+        // add data-animal attribute with animal name
         animalBtn.attr("data-animal", animals[i]);
 
-        // use animal name for button label
+        // add animal name as button label
         animalBtn.text(animals[i]);
 
-        // add to panel with #animal-buttons
+        // add button to #animal-buttons panel
         $("#animal-buttons").append(animalBtn);
 
     }
 
+    // when animal button is clicked
     $(".animal-btn").on("click", function() {
 
-    	$("#animal-img").empty();
+    	// clear gif results panel
+        $("#animal-img").empty();
 
+        // select attribute value of clicked button ...
         var animals = $(this).attr("data-animal");
 
-        var queryURL = "http://api.giphy.com/v1/gifs/search?q=" + animals + "&api_key=dc6zaTOxFJmzC&limit=10&rating=g";
+        // ... place in API URL and initiate search query
+        var queryURL = "http://api.giphy.com/v1/gifs/search?q=" + animals + "&api_key=dc6zaTOxFJmzC&limit=3&rating=g";
 
+        // get search query results
         $.ajax({
 
             url: queryURL,
@@ -41,29 +46,33 @@ $(document).ready(function() {
 
         })
 
+        // after getting search query results (response), pass through function
         .done(function(response) {
 
-        	console.log(queryURL);
-        	console.log(response);
+        	// access data of response
+            var results = response.data;
 
-        	var results = response.data;
+            // for each result (limit: 3)...
+            for (var i = 0; i < results.length; i++) {
 
-        	for (var i = 0; i < results.length; i++) {
+            	// ... create div tag
+                var animalDiv = $("<div>");
 
-        		var animalDiv = $("<div>");
+                // ... create img tag
+                var animalImg = $("<img>");
 
-        		var animalImg = $("<img>");
+                // ... assign src attribute to img tag with its url
+                animalImg.attr("src", results[i].images.fixed_height.url);
 
-        		animalImg.attr("src", results[i].images.fixed_height.url);
+                // ... place img tag inside div
+                animalDiv.append(animalImg);
 
-        		animalDiv.append(animalImg);
+                // ... and insert them at beginning of #animal-img div tag
+                $("#animal-img").prepend(animalDiv);
 
-        		$("#animal-img").prepend(animalDiv);
-
-        	}
+            }
         })
 
     });
-
 
 });
