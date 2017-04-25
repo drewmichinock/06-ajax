@@ -18,7 +18,7 @@ $(document).ready(function() {
         // add attribute "data-animal" with animal name
         animalBtn.attr("data-animal", animals[i]);
 
-        // user animal name for button label
+        // use animal name for button label
         animalBtn.text(animals[i]);
 
         // add to panel with "animal-buttons" id
