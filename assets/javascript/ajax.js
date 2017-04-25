@@ -6,13 +6,13 @@ $(document).ready(function() {
         "pygmy goat", "chicken", "capybara", "teacup pig", "serval", "salamander", "frog"
     ];
 
-    // for each item in animals array
+    // creating buttons for each item in animals array
     for (var i = 0; i < animals.length; i++) {
 
-    	// create button
+        // create button
         var animalBtn = $("<button>");
 
-        // add class "animal-btn"
+        // add class .animal-btn
         animalBtn.addClass("animal-btn");
 
         // add attribute "data-animal" with animal name
@@ -21,9 +21,49 @@ $(document).ready(function() {
         // use animal name for button label
         animalBtn.text(animals[i]);
 
-        // add to panel with "animal-buttons" id
+        // add to panel with #animal-buttons
         $("#animal-buttons").append(animalBtn);
 
     }
+
+    $(".animal-btn").on("click", function() {
+
+    	$("#animal-img").empty();
+
+        var animals = $(this).attr("data-animal");
+
+        var queryURL = "http://api.giphy.com/v1/gifs/search?q=" + animals + "&api_key=dc6zaTOxFJmzC&limit=10&rating=g";
+
+        $.ajax({
+
+            url: queryURL,
+            method: "GET"
+
+        })
+
+        .done(function(response) {
+
+        	console.log(queryURL);
+        	console.log(response);
+
+        	var results = response.data;
+
+        	for (var i = 0; i < results.length; i++) {
+
+        		var animalDiv = $("<div>");
+
+        		var animalImg = $("<img>");
+
+        		animalImg.attr("src", results[i].images.fixed_height.url);
+
+        		animalDiv.append(animalImg);
+
+        		$("#animal-img").prepend(animalDiv);
+
+        	}
+        })
+
+    });
+
 
 });
