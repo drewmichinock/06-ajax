@@ -26,6 +26,34 @@ $(document).ready(function() {
 
     }
 
+    //when submit button is clicked
+    $("#add-animal").on("click", function(event) {
+
+        // prevent form submission
+        event.preventDefault();
+
+        // get input and store in variable
+        var animalNew = $("#animal-input").val().trim();
+
+        animals.push(animalNew);
+
+        // create new variable for button
+        var animalNewBtn = $("<button>");
+
+        // add animal-btn class
+        animalNewBtn.addClass("animal-btn");
+
+        // add data-animal attribute with animal name
+        animalNewBtn.attr("data-animal", animalNew);
+
+        // add animal name as button label
+        animalNewBtn.text(animalNew);
+
+        // add button to #animal-buttons panel
+        $("#animal-buttons").append(animalNewBtn);
+
+    })
+
     // when animal button is clicked
     $(".animal-btn").on("click", function() {
 
