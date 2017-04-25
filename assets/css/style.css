@@ -1,0 +1,17 @@
+.animal-btn {
+    border: 0;
+    border-color: #4aaaa5;
+    border-radius: 3px;
+    background-color: #4aaaa5;
+    color: #fff;
+    margin: 3px;
+}
+
+#add-animal {
+	border: 0px;
+    border-color: #4aaaa5;
+    border-radius: 3px;
+    background-color: #4aaaa5;
+    color: #fff;
+    margin: 3px;
+}
