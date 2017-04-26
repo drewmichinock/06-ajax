@@ -64,7 +64,7 @@ $(document).ready(function() {
         var animals = $(this).attr("data-animal");
 
         // ... place in API URL and initiate search query
-        var queryURL = "http://api.giphy.com/v1/gifs/search?q=" + animals + "&api_key=dc6zaTOxFJmzC&limit=3&rating=g";
+        var queryURL = "http://api.giphy.com/v1/gifs/search?q=" + animals + "&api_key=dc6zaTOxFJmzC&limit=10&rating=g";
 
         // get search query results
         $.ajax({
@@ -80,11 +80,14 @@ $(document).ready(function() {
             // access data of response
             var results = response.data;
 
-            // for each result (limit: 3)...
+            // for each result (limit: 10)...
             for (var i = 0; i < results.length; i++) {
 
                 // ... create div tag
                 var animalDiv = $("<div>");
+
+                // ... create p tag for rating 
+                var p = $("<p>").text("rating: " + results[i].rating);
 
                 // ... create img tag
                 var animalImg = $("<img>");
@@ -92,7 +95,8 @@ $(document).ready(function() {
                 // ... assign src attribute to img tag with its url
                 animalImg.attr("src", results[i].images.fixed_height.url);
 
-                // ... place img tag inside div
+                // ... place p and img tag inside div
+                animalDiv.append(p);
                 animalDiv.append(animalImg);
 
                 // ... and insert them at beginning of #animal-img div tag
