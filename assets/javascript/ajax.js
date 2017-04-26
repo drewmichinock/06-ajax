@@ -64,10 +64,10 @@ $(document).ready(function() {
         // clear gif results panel
         $("#animal-img").empty();
 
-        // select attribute value of clicked button ...
+        // select attribute value of clicked button
         var animals = $(this).attr("data-animal");
 
-        // ... place in API URL and initiate search query
+        // place in API URL and initiate search query
         var queryURL = "http://api.giphy.com/v1/gifs/search?q=" + animals + "&api_key=dc6zaTOxFJmzC&limit=10&rating=g";
 
         // get search query results
@@ -84,19 +84,19 @@ $(document).ready(function() {
             // access data of response
             var results = response.data;
 
-            // for each result (limit: 10)...
+            // for each result (limit: 10)
             for (var i = 0; i < results.length; i++) {
 
-                // ... create div tag
+                // create div tag
                 var animalDiv = $("<div>");
 
-                // ... create p tag for rating 
+                // create p tag for rating 
                 var p = $("<p>").text("rating: " + results[i].rating);
 
-                // ... create img tag
+                // create img tag
                 var animalImg = $("<img>");
 
-                // ... assign following attributes and values to img
+                // assign following attributes and values to img
                 animalImg.attr("src", results[i].images.fixed_height_still.url);
 
                 animalImg.attr("data-still", results[i].images.fixed_height_still.url);
@@ -107,12 +107,12 @@ $(document).ready(function() {
 
                 animalImg.attr("class", "gif");
 
-                // ... place p and img tags inside div
+                // place p and img tags inside div
                 animalDiv.append(p);
 
                 animalDiv.append(animalImg);
 
-                // ... and insert them at beginning of #animal-img div tag
+                // and insert them at beginning of #animal-img div tag
                 $("#animal-img").prepend(animalDiv);
 
             }
@@ -126,7 +126,7 @@ $(document).ready(function() {
                 // if data-state value is still
                 if (state === "still") {
 
-                    // change src value to data-animate value ...
+                    // change src value to data-animate value
                     $(this).attr("src", $(this).attr("data-animate"));
 
                     // change data-state value to animate
