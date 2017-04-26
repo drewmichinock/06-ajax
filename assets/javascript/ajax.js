@@ -36,25 +36,35 @@ $(document).ready(function() {
         // get input and store in variable
         var animalNew = $("#animal-input").val().trim();
 
-        animals.push(animalNew);
+        // if input empty, submit nothing
+        if (animalNew === "") {}
 
-        // create new variable for button
-        var animalNewBtn = $("<button>");
+        // if not empty, submit input
+        else {
 
-        // add animal-btn class
-        animalNewBtn.addClass("animal-btn");
+            $("#add-animal").prop("disabled", false);
 
-        // add data-animal attribute with animal name
-        animalNewBtn.attr("data-animal", animalNew);
+            animals.push(animalNew);
 
-        // add animal name as button label
-        animalNewBtn.text(animalNew);
+            // create new variable for button
+            var animalNewBtn = $("<button>");
 
-        // add button to #animal-buttons panel
-        $("#animal-buttons").append(animalNewBtn);
+            // add animal-btn class
+            animalNewBtn.addClass("animal-btn");
 
-        // clear field after submission
-        $("#animal-input").val("");
+            // add data-animal attribute with animal name
+            animalNewBtn.attr("data-animal", animalNew);
+
+            // add animal name as button label
+            animalNewBtn.text(animalNew);
+
+            // add button to #animal-buttons panel
+            $("#animal-buttons").append(animalNewBtn);
+
+            // clear field after submission
+            $("#animal-input").val("");
+
+        }
 
     })
 
