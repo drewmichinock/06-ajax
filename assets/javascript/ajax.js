@@ -59,7 +59,7 @@ $(document).ready(function() {
     })
 
     // when animal button is clicked
-    $(".animal-btn").on("click", function() {
+    $(document).on("click", "button", function() {
 
         // clear gif results panel
         $("#animal-img").empty();
@@ -96,7 +96,7 @@ $(document).ready(function() {
                 // ... create img tag
                 var animalImg = $("<img>");
 
-                // ... assign the following attributes and values
+                // ... assign following attributes and values to img
                 animalImg.attr("src", results[i].images.fixed_height_still.url);
 
                 animalImg.attr("data-still", results[i].images.fixed_height_still.url);
@@ -107,7 +107,7 @@ $(document).ready(function() {
 
                 animalImg.attr("class", "gif");
 
-                // ... place p and img tag inside div
+                // ... place p and img tags inside div
                 animalDiv.append(p);
 
                 animalDiv.append(animalImg);
