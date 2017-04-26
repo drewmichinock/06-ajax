@@ -92,8 +92,12 @@ $(document).ready(function() {
                 // ... create img tag
                 var animalImg = $("<img>");
 
-                // ... assign src attribute to img tag with its url
-                animalImg.attr("src", results[i].images.fixed_height.url);
+                // ... assign the following attributes and values
+                animalImg.attr("src", results[i].images.fixed_height_still.url);
+                animalImg.attr("data-still", results[i].images.fixed_height_still.url);
+                animalImg.attr("data-animate", results[i].images.fixed_height.url);
+                animalImg.attr("data-state", "still");
+                animalImg.attr("class", "gif");
 
                 // ... place p and img tag inside div
                 animalDiv.append(p);
@@ -106,5 +110,13 @@ $(document).ready(function() {
         })
 
     });
+
+    // when gif is clicked
+    $(".gif").on("click", function() {
+
+    	// 
+    	var state = $(this)
+
+    })
 
 });

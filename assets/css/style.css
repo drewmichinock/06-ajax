@@ -8,6 +8,10 @@
     margin: 4px;
 }
 
-img {
-    padding-bottom: 10px;
+div p img {
+    display: inline-block;
+}
+
+#animal-img {
+	display: inline-block;
 }
