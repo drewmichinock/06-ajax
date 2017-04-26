@@ -53,6 +53,9 @@ $(document).ready(function() {
         // add button to #animal-buttons panel
         $("#animal-buttons").append(animalNewBtn);
 
+        // clear field after submission
+        $("#animal-input").val("");
+
     })
 
     // when animal button is clicked
